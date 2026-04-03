@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our 3 Days Together 💫</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #eee;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    header {
+      padding: 50px 20px;
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 10px #ff9ff3, 0 0 20px #a29bfe;
+    }
+
+    .section {
+      padding: 40px 20px;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      padding: 20px;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 18px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #ff9ff3;
+    }
+
+    .day-title {
+      font-size: 1.7rem;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 0 8px #74b9ff;
+    }
+
+    .caption-top {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #bbb;
+    }
+
+    .message {
+      margin: 40px auto;
+      max-width: 700px;
+      font-size: 1.2rem;
+      background: rgba(255,255,255,0.08);
+      padding: 30px;
+      border-radius: 20px;
+      line-height: 1.7;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #fff;
+      text-shadow: 0 0 10px #ff7675;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+
+<audio autoplay loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<header>
+  For You ❤️<br>
+  Our 3 Beautiful Days Together
+</header>
+
+<!-- DAY 1 -->
+<div class="section">
+  <p class="caption-top">That moment when everything felt perfect 😊</p>
+  <div class="day-title">The Day I Came to Surprise You</div>
+  <div class="media-grid">
+    <img src="day1_1.jpg">
+    <img src="day1_2.jpg">
+    <img src="day1_3.jpg">
+    <img src="day1_4.jpg">
+    <img src="day1_5.jpg">
+  </div>
+</div>
+
+<!-- DAY 2 -->
+<div class="section">
+  <p class="caption-top">We didn’t even realize how happy we were ✨</p>
+  <div class="day-title">The Day We Couldn't Stop Laughing</div>
+  <div class="media-grid">
+    <img src="day2_1.jpg">
+    <img src="day2_2.jpg">
+    <img src="day2_3.jpg">
+    <img src="day2_4.jpg">
+    <img src="day2_5.jpg">
+  </div>
+</div>
+
+<!-- DAY 3 -->
+<div class="section">
+  <p class="caption-top">Some goodbyes are harder than expected 💙</p>
+  <div class="day-title">The Day I Didn’t Want to Leave</div>
+  <div class="media-grid">
+    <img src="day3_1.jpg">
+    <img src="day3_2.jpg">
+    <img src="day3_3.jpg">
+    <img src="day3_4.jpg">
+    <img src="day3_5.jpg">
+  </div>
+</div>
+
+<div class="message">
+  These 3 days weren’t just memories… they were proof. 💫<br><br>
+  Proof that your smile is real.<br>
+  Proof that happiness exists beyond your thoughts.<br>
+  Proof that you’re more than what your mind makes you feel sometimes.<br><br>
+  I came to remind you how special you are. ❤️<br><br>
+  If your mind ever gets too loud… come back here.<br>
+  Because these moments are real… not your overthinking.<br><br>
+  And I’ll always be here too. 💙<br><br>
+  P.S. That smile? That’s the real you. 😊
+</div>
+
+<h2>Don’t let your thoughts lie to you. You’re important. ❤️</h2>
+
+<p style="opacity:0.6; font-size:0.9rem; margin-bottom:40px;">
+If you’re reading this… it means I still care. Always.
+</p>
+
+<script>
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.dx;
+    p.y += p.dy;
+
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
